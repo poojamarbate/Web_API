@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/Jquery.js"></script>
+<h2>Index</h2>
+
+<input type="button" value="Get All Employee" id="btn1" />
+<div id="ShowData">
+
+</div>
+<script>
+    $(document).ready(function () {
+        $("#btn1").click(function () {
+
+            $.getJSON('/api/EmployeesData', function (responseData) {
+
+                $.each(responseData, function (key, val) {
+
+                    var item = "<h2>" + val + "</h2>";
+                    $(item).appendTo("#ShowData");
+
+                });
+
+            });
+
+        });
+
+    });
+</script>
