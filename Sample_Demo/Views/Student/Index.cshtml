@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/JQuery.js"></script>
+<h2>Index</h2>
+<input type="button" value="Get all names" id="btn1" />
+<br />
+<div id="ShowData">
+
+</div>
+<script>
+    $(document).ready(function () {
+        $("#btn1").click(function () {
+            $.getJSON('/api/StudentAPIData', function (responseData) {
+                $.each(responseData, function (key, val) {
+                    var item = "<h1>" + val + "</h2>";
+                    $(item).appendTo("#ShowData");
+
+                })
+            });
+        });
+    });
+</script>
+
